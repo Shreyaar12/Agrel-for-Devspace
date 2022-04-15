@@ -2,7 +2,8 @@ const { join } = require("path");
 const router = require("express").Router();
 const Farmer = require(join(__dirname, "..", "models", "Farmer"));
 const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
-
+/* eslint-disable no-unused-vars */
+// this is for farmer dashboard
 router.post("/crop", verifyFarmer, async (req, res) => {
   const { name, description, details, location, openToContractFarming } = req.body;
   if (!details.howOld || !details.estimatedTime) {
@@ -16,7 +17,6 @@ router.post("/crop", verifyFarmer, async (req, res) => {
   try {
     const farmer = await Farmer.findOne({ _id: req.user.user.id });
     if (!farmer) {
-      // create new
       const newFarmer = new Farmer({
         _id: req.user.user.id,
         crops: [{
@@ -49,8 +49,6 @@ router.post("/crop", verifyFarmer, async (req, res) => {
   }
 
 });
-
-// above works
 
 router.get("/crop", verifyFarmer, async (req, res) => { // works
   await Farmer.findOne({ farmer: req.user.user.id })
@@ -93,8 +91,27 @@ router.put("/crop", verifyFarmer, async (req, res) => {
     });
 });
 
-// router.delete('/crop', verifyFarmer, async (req, res) => {
+router.delete("/crop", verifyFarmer, async (req, res) => {
+  const { name } = req.body;
+  if (!name) return res.status(400).json({ message: "Name is required" });
 
-// });
+  Farmer.findOneAndUpdate({
+    farmer: req.user.user.id,
+    "crops.name": name
+  }, {
+    $pull: {
+      "crops": {
+        name
+      }
+    }
+  }, { new: true })
+    .then(farmer => {
+      return res.status(201).json({ message: "Crop deleted successfully" });
+    })
+    .catch(error => {
+      console.log(error);
+      return res.status(500).json({ message: "Something went wrong" });
+    });
+});
 
 module.exports = router;

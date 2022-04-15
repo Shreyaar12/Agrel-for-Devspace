@@ -9,4 +9,4 @@ const CropSchema = new mongoose.Schema({
   sold: { type: Number, default: 0 },
 });
 // marketplace
-module.exports = mongoose.model("Buyet_Marketplace", CropSchema);
+module.exports = mongoose.model("Buyer_Marketplace", CropSchema);

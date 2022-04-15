@@ -5,7 +5,6 @@ Requires MongoDB, Node.js, Express
 ### Requests 
 Base URL : `/api/v1/`
 
-
 | Endpoint       | Request      | Body                                 | Header     | Param | Response                                  |
 |----------------|--------------|--------------------------------------|------------|-------|-------------------------------------------|
 | /authenticate/ | POST /Signup | name,email,password                  | None       | None  | Status, token                             |
