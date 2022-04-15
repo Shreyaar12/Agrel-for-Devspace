@@ -22,7 +22,7 @@ var ReviewApp = (function(){
     // console.log('Working');
     // method get
     function fetchReviews(){
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch("/api/v1/review")
     //returns promise
     .then(function(response){
         console.log(response);
