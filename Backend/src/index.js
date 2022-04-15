@@ -13,7 +13,6 @@ mongoose.Promise = global.Promise;
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-  
 
 // routes
 app.use("/api/v1/authenticate", require(join(__dirname, "api", "routes", "authenticate")));

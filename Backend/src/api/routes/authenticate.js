@@ -27,7 +27,7 @@ router.post("/signup",
       const payload = { user: { id: user.id }, isFarmer: user.isFarmer, name: user.name };
       jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
-        res.status(201).json({ token });
+        res.status(201).json({ status: "ok", token });
       });
     } catch (err) {
       console.error(err.message);
@@ -52,7 +52,7 @@ router.post("/login",
       const payload = { user: { id: user.id }, isFarmer: user.isFarmer, name: user.name };
       jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
-        res.status(200).json({ token });
+        res.status(200).json({ status: "ok", token });
       });
     } catch (err) {
       console.error(err.message);

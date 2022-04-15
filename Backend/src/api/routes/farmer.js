@@ -10,7 +10,7 @@ router.post("/crop", verifyFarmer, async (req, res) => {
   }
   if (!location.city || !location.state || !location.disctrict) 
     return res.status(400).json({ message: "Location must be in this format: { city: String, state: String, disctrict: String }" });
-  if (!name || !description || !details || !location || !openToContractFarming)
+  if (!name || !description || !details || !location )
     return res.status(400).json({ message: "All fields are required" });
 
   try {

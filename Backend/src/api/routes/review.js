@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 router.get("/", async (req, res) => {
   try {
+    // needs to implement auth or cors
     const reviews = await Review.find();
     const reviewArray = reviews.map(review => {
       return {
@@ -26,6 +27,7 @@ router.post("/",
     check("review", "Review is required").not().isEmpty()
   ],
   async (req, res) => {
+    // needs to implement auth or cors
     const errors = validationResult(req);
     if (!errors.isEmpty()) { return res.status(400).json({ errors: errors.array() }); }
     const { name, review } = req.body;
