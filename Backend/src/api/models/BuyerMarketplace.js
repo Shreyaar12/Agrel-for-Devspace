@@ -8,5 +8,5 @@ const CropSchema = new mongoose.Schema({
   total: { type: Number, required: true },
   sold: { type: Number, default: 0 },
 });
-
-module.exports = mongoose.model("Crop", CropSchema);
+// marketplace
+module.exports = mongoose.model("Buyet_Marketplace", CropSchema);

@@ -1,17 +1,17 @@
 const { join } = require("path");
 const router = require("express").Router();
-const Crop = require(join(__dirname, "..", "models", "Crop"));
+const BuyerMarketPlace = require(join(__dirname, "..", "models", "BuyerMarketPlace"));
 const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
 
 router.post("/add", verifyFarmer, async (req, res) => {
   const {name, description, price, total} = req.body;
-  const crop = await Crop.findOne({ farmer: req.user.user.id, name });
+  const crop = await BuyerMarketPlace.findOne({ farmer: req.user.user.id, name });
   if (crop) {
     return res.status(400).json({ message: "Crop already exists" });
   }
 
   try {
-    const crop = new Crop({
+    const crop = new BuyerMarketPlace({
       name,
       description,
       price,
@@ -28,3 +28,5 @@ router.post("/add", verifyFarmer, async (req, res) => {
 });
 
 module.exports = router;
+
+// to do

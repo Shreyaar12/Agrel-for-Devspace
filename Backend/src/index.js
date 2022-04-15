@@ -18,8 +18,9 @@ app.use(bodyParser.json());
 // routes
 app.use("/api/v1/authenticate", require(join(__dirname, "api", "routes", "authenticate")));
 app.use("/api/v1/review", require(join(__dirname, "api", "routes", "review")));
-app.use("/api/v1/crop", require(join(__dirname, "api", "routes", "crop")));
-app.use("/api/v1/cart", require(join(__dirname, "api", "routes", "cart")));
+app.use("/api/v1/farmer", require(join(__dirname, "api", "routes", "farmer")));
+// app.use("/api/v1/buyermarket", require(join(__dirname, "api", "routes", "buyermarket")));
+// app.use("/api/v1/cart", require(join(__dirname, "api", "routes", "cart")));
 
 const port = process.env.PORT || 3000;
 

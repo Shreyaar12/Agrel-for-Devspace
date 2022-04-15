@@ -36,7 +36,6 @@ const verifyUser = (req, res, next) => {
 
 const verifyFarmer = (req, res, next) => { 
   verifyToken(req, res, () => {
-    console.log(req.user);
     if (req.user.isFarmer) {
       next();
     } else {
