@@ -5,6 +5,14 @@ const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
 
 router.post("/crop", verifyFarmer, async (req, res) => {
   const { name, description, details, location, openToContractFarming } = req.body;
+  if (!details.howOld || !details.estimatedTime) {
+    return res.status(400).json({ message: "Details must be in this format: { howOld: String, estimatedTime: String }" });
+  }
+  if (!location.city || !location.state || !location.disctrict) 
+    return res.status(400).json({ message: "Location must be in this format: { city: String, state: String, disctrict: String }" });
+  if (!name || !description || !details || !location || !openToContractFarming)
+    return res.status(400).json({ message: "All fields are required" });
+
   try {
     const farmer = await Farmer.findOne({ _id: req.user.user.id });
     if (!farmer) {
@@ -56,12 +64,14 @@ router.get("/crop", verifyFarmer, async (req, res) => { // works
 });
 
 router.put("/crop", verifyFarmer, async (req, res) => {
+    
   const { name, description, details, location, openToContractFarming } = req.body;
-  // if name exists in array of farmer crops
-  // update the crop
-  // else
-  // add the crop
-  //   const cropExists = Farmer.crops.find(crop => crop.name === name);
+  if (!details.howOld || !details.estimatedTime) {
+    return res.status(400).json({ message: "Details must be in this format: { howOld: String, estimatedTime: String }" });
+  }
+  if (!location.city || !location.state || !location.disctrict) 
+    return res.status(400).json({ message: "Location must be in this format: { city: String, state: String, disctrict: String }" });
+
   Farmer.findOneAndUpdate({
     farmer: req.user.user.id,
     "crops.name": name
