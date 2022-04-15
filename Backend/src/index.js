@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // routes
+app.use("/api/v1/authenticate", require(join(__dirname, "api", "routes", "authenticate")));
+app.use("/api/v1/reviews", require(join(__dirname, "api", "routes", "review")));
 
 const port = process.env.PORT || 3000;
 
