@@ -6,6 +6,12 @@ async function getWeather(city) {
   return data.body;
 }
 
+async function forecast(city, days) {
+  const data = await request.get(`${url}/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${city}&days=${days}`);
+  return data.body;
+}
+
 module.exports = {
-  getWeather
+  getWeather,
+  forecast
 };
