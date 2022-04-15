@@ -93,4 +93,8 @@ router.put("/crop", verifyFarmer, async (req, res) => {
     });
 });
 
+// router.delete('/crop', verifyFarmer, async (req, res) => {
+
+// });
+
 module.exports = router;
