@@ -5,13 +5,13 @@ const secret = process.env.JWT_SECRET || "secret123";
 const verifyToken = (req, res, next) => {
   const token = req.header("token");
   if (token) {
-    jwt.verify(token, secret, (err, decoded) => {
+    jwt.verify(token, secret, (err, user) => {
       if (err) {
         return res.status(401).json({
           message: "Invalid token"
         });
       }
-      req.user = decoded;
+      req.user = user;
       next();
     });
   }
@@ -36,6 +36,7 @@ const verifyUser = (req, res, next) => {
 
 const verifyFarmer = (req, res, next) => { 
   verifyToken(req, res, () => {
+    console.log(req.user);
     if (req.user.isFarmer) {
       next();
     } else {

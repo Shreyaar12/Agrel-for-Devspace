@@ -24,7 +24,7 @@ router.post("/signup",
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
       await user.save();
-      const payload = { user: { id: user.id } };
+      const payload = { user: { id: user.id }, isFarmer: user.isFarmer };
       jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
         res.status(201).json({ token });
@@ -49,7 +49,7 @@ router.post("/login",
       if (!user) { return res.status(400).json({ message: "User does not exist" }); }
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) { return res.status(400).json({ message: "Invalid credentials" }); }
-      const payload = { user: { id: user.id } };
+      const payload = { user: { id: user.id }, isFarmer: user.isFarmer };
       jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
         res.status(200).json({ token });
