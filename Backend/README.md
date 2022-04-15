@@ -3,43 +3,33 @@
 Requires MongoDB, Node.js, Express
 
 ### Requests 
+Base URL : `/api/v1/`
 
-##### Authentication: 
-/api/v1/authenticate
 
-2 POST requests
-Login:  Need to pass email and password as json body   
-Returns a token , which is used to authenticate the user
+| Endpoint       | Request      | Body                                 | Header     | Param | Response                                  |
+|----------------|--------------|--------------------------------------|------------|-------|-------------------------------------------|
+| /authenticate/ | POST /Signup | name,email,password                  | None       | None  | Status, token                             |
+| /authenticate  | POST /login  | email, password                      | None       | None  | status,token                              |
+| /review        | POST /       | name, review                         | SpecialKey | None  | response                                  |
+| /review        | GET /        | None                                 | None       | None  | All the Reviews                           |
+| /weather       | Get /        | city                                 | None       | None  | city,country,temperature,region,condition |
+| /farmer        | POST /crop   | name, description, details, location | token      | None  | Response from API                         |
+| /farmer        | GET /crop    | none                                 | token      | None  | All the crops of the farmer               |
+| /farmer        | PUT /crop    | same as farmer                       | token      | None  | Response Status From api                  |
 
-Register: Need to pass email, name and password as json body
-Returns a token
 
-/api/v1/review
-needs auth / cors
-POST: To post a review > Name and Review as JSON Body
-GET: returns a list of reviews
+/farmer JSON Object to pass to the api
 
-/api/v1/weather
-GET: Need to pass city as JSON Body , returns a JSON object with the weather
-
-/api/v1/farmer
-POST /crop : Need to pass auth token as header, and
+```json
+"name": "",
+"description": "",
+"details": {
+      "howOld": "",
+      "estimatedTime": ""
+      },
+"location": {
+      "city": "",
+      "state": "",
+      "district": "",
+}
 ```
-name: { type: String },
-    description: { type: String },
-    details: {
-      howOld: { type: String },
-      estimatedTime: { type: String },
-    },
-    location: {
-      city: { type: String },
-      state: { type: String },
-      district: { type: String },
-    },
-```
-as body, returns a success message if succed
-GET /crop: Needs to pass auth token as header
-Returns a list of crops of the farmer 
-
-PUT /crop: Same as POST 
-except for updating the crop details
