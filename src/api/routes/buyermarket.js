@@ -1,6 +1,6 @@
 const { join } = require("path");
 const router = require("express").Router();
-const BuyerMarketPlace = require(join(__dirname, "..", "models", "BuyerMarketPlace"));
+const BuyerMarketPlace = require(join(__dirname, "..", "models", "BuyerMarketplace"));
 const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
 
 router.post("/add", verifyFarmer, async (req, res) => {
