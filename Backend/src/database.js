@@ -1,12 +1,10 @@
-const mongoose = require("mongoose");
 require("dotenv").config();
-
+const mongoose = require("mongoose");
+const url = process.env.MONGO_URL;
 (async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
+    await mongoose.connect(url, {
       useNewUrlParser: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
       useUnifiedTopology: true,
     });
   } catch (err) {
