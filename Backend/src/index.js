@@ -24,6 +24,7 @@ app.use("/api/v1/cart", require(join(__dirname, "api", "routes", "cart")));
 app.use("/api/v1/news", require(join(__dirname, "api", "routes", "news")));
 app.use("/api/v1/feedback", require(join(__dirname, "api", "routes", "feedback")));
 app.use("/api/v1/weather", require(join(__dirname, "api", "routes", "weather")));
+app.use("/api/v1/equipments", require(join(__dirname, "api", "routes", "equipments")));
 const port = process.env.PORT || 3000;
 
 //Start the server
