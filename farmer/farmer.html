@@ -97,31 +97,13 @@ window.location.href = 'farmer.html';
 }
 
 function login(event) {
-//     const email = document.getElementById('email').value;
+
     const openToContractFarming = document.getElementById(' openToContractFarming').value;
 
-// const name = document.getElementById('name').value;
+
 
 const xhttp = new XMLHttpRequest();
-// xhttp.open('POST', "");
-// xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-// xhttp.setRequestHeader("token",jwt);
-// xhttp.send(JSON.stringify({
-//     'name':name,
-//     "email":email,
-//     "openToContractFarming": openToContractFarming
 
-    // 'description': description,
-    // 'details':{
-    //     "howOld": howOld,
-    //     "estimatedTime": estimatedTime,
-
-    // },
-    // "location": {
-    //    " city ": city,
-    //     "state": state,
-    //    " district" : district
-    // } 
     xhttp.open('POST', 'http://localhost:3000/api/v1/farmer/opentocontract');
 
 xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');

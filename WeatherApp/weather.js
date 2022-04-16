@@ -22,7 +22,7 @@ var ReviewApp = (function(){
     // console.log('Working');
     // method get
     function fetchReviews(){
-    fetch("localhost:3000/api/v1/weather/status/")
+    fetch("https://localhost:3000/api/v1/weather/status/")
     //returns promise
     .then(function(response){
         console.log(response);

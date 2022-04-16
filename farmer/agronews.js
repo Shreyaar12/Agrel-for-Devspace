@@ -22,7 +22,7 @@ var NewsApp = (function(){
     // console.log('Working');
     // method get
     function fetchReviews(){
-    fetch("http://acril-backend.herokuapp.com/api/v1/news/")
+    fetch("http://localhost:3000/api/v1/news/")
     //returns promise
     .then(function(response){
         console.log(response);
