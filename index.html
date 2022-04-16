@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Name</title>
+    <title>Agrel</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -227,13 +227,37 @@ Assisting farmers in the <span class="text-highlight">protection and maintenance
             <div id="contact-container">
 
                 <div id="contact-form-container" >
-                    <form id="contact-form" method="post">
-                        <input id="input-name" name="name" type="text" placeholder="Your Name">
-                        <input id="input-email" name="input-email" type="text" required placeholder="Your Email">
-                        <textarea id="input-message" name="input-message" rows="2" cols=40 placeholder="Message"></textarea>
-                        <button class="sub-btn" type="submit">Ab</button>
-                    </form>
+                    <!-- <form id="contact-form" method="post"> -->
+                        <!-- <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" id="contact-form-container" method="post">
+                            <label for="fname" > </label>
+                            <input id="input-name" name="name" type="text" placeholder="Your Name">
+                            <label for="email"></label>
+                            <input id="input-email" name="email" type="text" required placeholder="Your Email">
+                            <label for="message"></label>
+                        <textarea id="input-message" name="message" rows="2" cols=40 placeholder="Message"></textarea>
+                        <input class="sub-btn" type="submit" value="submit">
+                    </form> -->
+                    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
+                        <label for="fname" > name:</label>
+                        <input  id="email" type="text" id="name" name="name"><br><br>
+                        <label for="email">email</label>
+                        <input type="text" id="name" name="email"><br><br>
+                        <label for="message">message</label>
+                        <input type="text" id="message" name="message"><br><br>
+                        <input type="submit" value="Submit">
+                      </form>
                 </div>
+
+                 <!-- </form>
+    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
+        <label for="fname" > name:</label>
+        <input  id="email" type="text" id="name" name="name"><br><br>
+        <label for="email">email</label>
+        <input type="text" id="name" name="email"><br><br>
+        <label for="message">message</label>
+        <input type="text" id="message" name="message"><br><br>
+        <input type="submit" value="Submit">
+      </form> -->
                 
                 <div id="my-details-container">
 

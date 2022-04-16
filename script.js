@@ -9,7 +9,7 @@ function login() {
     const message = document.getElementById('input-message')= document.getElementById('input-email').value;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open('POST', '/user/login');
+    xhttp.open('POST', 'http://acril-backend.herokuapp.com/api/v1/feedback/add');
     xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     xhttp.send(JSON.stringify({
         'name': name,

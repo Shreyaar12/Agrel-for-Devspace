@@ -11,7 +11,7 @@ function signup() {
     const password = document.getElementById('password').value;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open('POST', 'api/v1/authenticate/signup');
+    xhttp.open('POST', 'http://acril-backend.herokuapp.com/api/v1/authenticate/signup');
     xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     xhttp.send(JSON.stringify({
         'name': name,
