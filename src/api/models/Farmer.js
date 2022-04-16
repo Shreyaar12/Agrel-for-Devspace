@@ -7,7 +7,7 @@ const FarmerSchema =  new mongoose.Schema({
     description: { type: String },
     details: {
       howOld: { type: String },
-      estimatedTime: { type: String },
+      estimatedTime: { type: String }, //
     },
     location: {
       city: { type: String },

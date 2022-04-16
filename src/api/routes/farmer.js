@@ -6,7 +6,7 @@ const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
 // this is for farmer dashboard
 router.post("/crop", verifyFarmer, async (req, res) => {
   const { name, description, details, location, openToContractFarming } = req.body;
-  if (!details.howOld || !details.estimatedTime) {
+  if (!details.howOld) {
     return res.status(400).json({ message: "Details must be in this format: { howOld: String, estimatedTime: String }" });
   }
   if (!location.city || !location.state || !location.disctrict) 
