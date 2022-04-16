@@ -47,11 +47,15 @@ async function isCropAbleToGrow(crop, city) {
   const weather = await getDaily(city);
   const howOld = detail[0].howOld;
   const estimatedTime = detail[0].estimatedTime;
+  let willItRain = 0;
+  if (willItRain === 1) { willItRain = "yes";} else { willItRain = "no";}
   // check chance of rain
+  
   let response = {
     city: weather.city,
     crop: crop,
     howOld,
+    willItRain,
     estimatedTime,
     status: "",
     goodOrBad: "",
