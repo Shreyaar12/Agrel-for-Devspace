@@ -40,6 +40,7 @@ router.post("/crop", verifyFarmer, async (req, res) => {
           description,
           details: {
             howOld: details.howOld,
+            estimatedTime: details.estimatedTime
           },
           location: {
             city: location.city,
