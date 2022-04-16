@@ -21,6 +21,7 @@ app.use("/api/v1/review", require(join(__dirname, "api", "routes", "review")));
 app.use("/api/v1/farmer", require(join(__dirname, "api", "routes", "farmer")));
 app.use("/api/v1/buyermarket", require(join(__dirname, "api", "routes", "buyermarket")));
 // app.use("/api/v1/cart", require(join(__dirname, "api", "routes", "cart")));
+app.use("/api/v1/news", require(join(__dirname, "api", "routes", "news")));
 app.use("/api/v1/feedback", require(join(__dirname, "api", "routes", "feedback")));
 app.use("/api/v1/weather", require(join(__dirname, "api", "routes", "weather")));
 const port = process.env.PORT || 3000;
