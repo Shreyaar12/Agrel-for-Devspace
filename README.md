@@ -72,7 +72,9 @@
 
 One- stop solution that connects farmers, NGOs, and agro-businesses
 A platform that connects the agriculture business and eliminates the need for middle men.
+
 Assisting farmers in the protection and maintenance of their crops in the face of adverse weather and help them remain vigilant through a user-friendly product
+
 
 ![Screenshot (1467)](https://user-images.githubusercontent.com/91542376/163590770-ca887ab9-6e2e-476f-b2d4-ab9483682e42.png)
 
