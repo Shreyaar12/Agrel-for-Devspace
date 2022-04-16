@@ -21,7 +21,7 @@ router.post("/opentocontract", verifyFarmer, async (req, res) => {
   }
 });
 router.post("/crop", verifyFarmer, async (req, res) => {
-  const { name, description, details, location, openToContractFarming } = req.body;
+  const { name, description, details, location } = req.body;
   if (!details.howOld) {
     return res.status(400).json({ message: "Details must be in this format: { howOld: String, estimatedTime: String }" });
   }
@@ -38,10 +38,15 @@ router.post("/crop", verifyFarmer, async (req, res) => {
         crops: [{
           name,
           description,
-          details,
-          location,
+          details: {
+            howOld: details.howOld,
+          },
+          location: {
+            city: location.city,
+            state: location.state,
+            disctrict: location.disctrict
+          }
         }],
-        openToContractFarming
       });
       await newFarmer.save();
     }
