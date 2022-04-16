@@ -22,20 +22,28 @@
         Login here
         </div>
       
-    <form id="login">
+    <form id="login" method="post">
         <div id="center">   <label for="unser"><b>Email</b></label>
-            <input id="email" type="text" placeholder="Enter Email" name="user" required> <br>
+            <input id="email" type="text" placeholder="Enter Email" name="email" required> <br>
             </div>
           <div id="center">
           
               <label for="passw"><b>Password</b></label>
-              <input id="password" type="password" placeholder="Enter Password" name="passw" required><br>
+              <input id="password" type="password" placeholder="Enter Password" name="password" required><br>
           </div>
                 <div id="button">
-                    <button id="button" type="button">Submit</button>
+                    <button id="button" type="submit">Submit</button>
                  </div>
-    </form>
-   
+    <!-- </form>
+    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
+        <label for="fname" > name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">email</label>
+        <input type="text" id="name" name="email"><br><br>
+        <label for="message">message</label>
+        <input type="text" id="message" name="message"><br><br>
+        <input type="submit" value="Submit">
+      </form> -->
    
      
   

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Sign up Page</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="loginpage.css">
@@ -19,22 +19,26 @@
      
   <div class="container"> 
     <div id="textmain">  Welcome 
-        Login here
+        Sign up here
         </div>
-      
-    <form id="login">
-        <div id="center">   <label for="unser"><b>Email</b></label>
-            <input id="email" type="text" placeholder="Enter Email" name="user" required> <br>
-            </div>
-          <div id="center">
-          
-              <label for="passw"><b>Password</b></label>
-              <input id="password" type="password" placeholder="Enter Password" name="passw" required><br>
-          </div>
-                <div id="button">
-                    <button id="button" type="submit">Submit</button>
-                 </div>
-    </form>
+        <form method="post">
+            <div id="center">   <label for="unser"><b>Name</b></label>
+                <input id="name" type="text" placeholder="Enter Name" name="name" required> <br>
+                </div>
+            <div id="center">   <label for="unser"><b>Email</b></label>
+                <input id="email" type="text" placeholder="Enter Email" name="email" required> <br>
+                </div>
+              <div id="center">
+              
+                  <label for="passw"><b>Password</b></label>
+                  <input id="password" type="password" placeholder="Enter Password" name="password" required><br>
+              </div>
+                   <div id="button" >
+                        <button id="button" type="submit">Submit</button>
+                        </div>
+                  
+          </form>
+    
    
    
      
@@ -45,7 +49,7 @@
    <span id="center1"> Agrel </span> Portal
 </div>
 
-    <script src="login.js"></script>
+    <script src="signup.js"></script>
 
 </body>
 </html>
