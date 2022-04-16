@@ -15,7 +15,7 @@ async function getforecast(city, days) {
 async function getDaily(city) {
   let data = await request.get(`${url}/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${city}&days=1`);
   console.log(data);
-  data = data.body
+  data = data.body;
   const condition = data.forecast.forecastday[0].day.condition.text;
   const willItRain = data.forecast.forecastday[0].day.daily_will_it_rain;
   const maxTemp = data.forecast.forecastday[0].day.maxtemp_c;
