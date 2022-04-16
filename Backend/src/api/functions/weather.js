@@ -47,35 +47,51 @@ async function isCropAbleToGrow(crop, city) {
   let response = {
     city: weather.city,
     crop: crop,
+    howOld: detail.howOld,
+    estimatedTime: detail.estimatedTime,
     status: "",
+    goodOrBad: "",
+    action: "",
     message: ""
   };
   if (weather.chanceOfRain === 1 || weather.willItRain === 1) {
     response.status = "Rainy";
+    response.goodOrBad = "bad";
+    response.action = "Avoid";
     response.message = "Protect your crop from rain";
     return response;
   } 
   if (weather.maxwind > 160) {
     response.status = "Thunderstorm";
+    response.goodOrBad = "bad";
+    response.action = "Avoid";
     response.message = "Thunderstorm is not good for it";
     return response;
   }
   if (weather.avghumidity > 90) {
     response.status = "Humid";
+    response.goodOrBad = "bad";
+    response.action = "Avoid";
     response.message = "Humidity is not good for it";
     return response;
   }
   if (weather.avgTemp > detail.maxTemp) {
     response.status = "Too hot";
+    response.goodOrBad = "bad";
+    response.action = "Avoid";
     response.message = "Too hot for it";
     return response;
   }
   if (weather.avgTemp < detail.minTemp) {
     response.status = "Too cold";
+    response.goodOrBad = "bad";
+    response.action = "Avoid";
     response.message = "Too cold for it";
     return response;
   }
   response.status = "Able to grow";
+  response.goodOrBad = "good";
+  response.action = "Grow";
   response.message = "You can grow it";
   return response;
 }
