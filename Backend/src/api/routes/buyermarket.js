@@ -27,9 +27,19 @@ router.post("/add", verifyFarmer, async (req, res) => {
   }
 });
 
-router.get("/", verifyFarmer, async (req, res) => {
+router.get("/farmer", verifyFarmer, async (req, res) => {
   try {
     const crops = await BuyerMarketPlace.find({ farmer: req.user.user.id });
+    return res.status(200).json({ crops });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const crops = await BuyerMarketPlace.find({});
     return res.status(200).json({ crops });
   } catch (error) {
     console.log(error);

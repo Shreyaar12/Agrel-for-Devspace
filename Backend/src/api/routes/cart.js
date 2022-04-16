@@ -26,49 +26,26 @@ router.post("/new", verifyUser, async (req, res) => {
 
 
 router.put("/", verifyUser, async (req, res) => {
+  const { items } = req.body;
   try {
-    const page = parseInt(req.query.page) || 0; 
-    const limit = parseInt(req.query.limit) || 10;
-    await Cart.findByIdAndUpdate({ user: req.user.user.id }, { $set: req.body }, { new: true })
-      .sort({ update_at: -1 })
-      .skip(page * limit) 
-      .limit(limit)
-      .exec((err, doc) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          return res.status(200).json({
-            page: page,
-            total: doc.length,
-            cart: doc
-          });
-        }
-      });
+    const cart = await Cart.findOne({ user: req.user.user.id });
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
+    const updatedCart = await Cart.findOneAndUpdate(
+      { user: req.user.user.id },
+      { $set: { items } },
+      { new: true }
+    );
+    return res.status(200).send(updatedCart);
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
   }
 });
 
 router.get("/", verifyUser, async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 0; 
-    const limit = parseInt(req.query.limit) || 10;
 
-    await Cart.findById({ user: req.user.user.id })
-      .sort({ update_at: -1 })
-      .skip(page * limit) 
-      .limit(limit)
-      .exec((err, doc) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          return res.status(200).json({
-            page: page,
-            total: doc.length,
-            cart: doc
-          });
-        }
-      });
+    const cart = await Cart.findOne({ user: req.user.user.id });
+    return res.status(200).json({ cart });
   } catch (error) {
     res.status(500).send(error);
   }
