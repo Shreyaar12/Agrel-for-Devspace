@@ -22,7 +22,7 @@ var ReviewApp = (function(){
     // console.log('Working');
     // method get
     function fetchReviews(){
-    fetch("/api/v1/review")
+    fetch("http://acril-backend.herokuapp.com/api/v1/review")
     //returns promise
     .then(function(response){
         console.log(response);
