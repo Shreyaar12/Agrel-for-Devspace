@@ -1,16 +1,8 @@
-// prediction of some hours
-// paddy at 80th date
-// rain is not good for it 
-// action by farmer required
-//
-// weather 
-
-
 // to do
 const { join } = require("path");
 const router = require("express").Router();
 const { getWeather, getforecast, isCropAbleToGrow } = require(join(__dirname, "..", "functions", "weather"));
-
+const Details = require(join(__dirname, "..", "models", "Details"));
 
 router.get("/", async (req, res) => {
   const { city } = req.body;
@@ -49,9 +41,10 @@ router.get("/upcoming", async (req, res) => {
 });
 
 router.get("/status", async (req, res) => {
-  const { crop, city } = req.body;
+  let crop = req.body.crop;
+  const { city } = req.body;
+  if (!crop) crop = "paddy";
   if (!city) return res.status(400).json({ message: "City is required" });
-  if (!crop) return res.status(400).json({ message: "Crop is required" });
   try {
     const data = await isCropAbleToGrow(crop, city);
     if (!data) return res.status(400).json({ message: "Crop in DataBase not found, Please ask admin to update database" });
@@ -61,5 +54,38 @@ router.get("/status", async (req, res) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 });
+
+// router.post("/add", async (req, res) => {
+//   const { crop, maxTemp, minTemp, avgTemp, avghumidity, maxwind, howOld, estimatedTime } = req.body;
+//   if (!crop) return res.status(400).json({ message: "Crop is required" });
+//   if (!maxTemp) return res.status(400).json({ message: "Max Temp is required" });
+//   if (!minTemp) return res.status(400).json({ message: "Min Temp is required" });
+//   if (!avgTemp) return res.status(400).json({ message: "Avg Temp is required" });
+//   if (!avghumidity) return res.status(400).json({ message: "Avg Humidity is required" });
+//   if (!maxwind) return res.status(400).json({ message: "Max Wind is required" });
+//   try {
+//     const data = await Details.create({
+//       crop,
+//       maxTemp,
+//       minTemp,
+//       avgTemp,
+//       avghumidity,
+//       maxwind,
+//       howOld,
+//       estimatedTime
+//     });
+//     await data.save().then(() => {
+//       return res.status(200).json({ message: "Details added successfully" });
+//     })
+//       .catch(err => {
+//         console.log(err);
+//         return res.status(500).json({ message: "Something went wrong" });
+//       }
+//       );
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).json({ message: "Something went wrong" });
+//   }
+// });
 
 module.exports = router;
