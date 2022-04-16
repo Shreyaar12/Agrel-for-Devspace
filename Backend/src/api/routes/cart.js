@@ -7,9 +7,14 @@ const { verifyUser } = require(join(__dirname, "..", "middleware", "auth"));
 // this is for user buying marketplace
 
 router.post("/new", verifyUser, async (req, res) => {
+  const { item, quantity } = req.body;
+  if (!item || !quantity) return res.status(400).json({ message: "Please provide item and quantity" });
   const newCart = new Cart({
     user: req.user.user.id,
-    items: req.body.items,
+    items: {
+      item,
+      quantity,
+    }
   });
   try {
     const savedCart = await newCart.save();

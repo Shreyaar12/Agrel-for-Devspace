@@ -5,6 +5,7 @@ const CropSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   farmer: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
+  image: { type: String, required: false },
   total: { type: Number, required: true },
   sold: { type: Number, default: 0 },
 });
