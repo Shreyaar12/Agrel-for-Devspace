@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,64 +21,38 @@
     <div id="textmain">  Welcome 
         Login here
         </div>
-      
-    <form id="login" method="post">
-        <div id="center">   <label for="unser"><b>Email</b></label>
-            <input id="email" type="text" placeholder="Enter Email" name="email" required> <br>
+
+
+  <main>
+    <form onsubmit=" return login()">
+        <!-- <label for="fname" > name:</label>
+        <input type="name" id="name" name="name"><br><br> -->
+        <div id="center">  
+             <label for="email"><b>Email</b></label>
+            <input id="email" type="email" placeholder="Enter Email" name="email" required> <br>
             </div>
           <div id="center">
           
-              <label for="passw"><b>Password</b></label>
+              <label for="password"><b>Password</b></label>
               <input id="password" type="password" placeholder="Enter Password" name="password" required><br>
           </div>
                 <div id="button">
-                    <button id="button" type="submit">Submit</button>
+                    
+        <input type="submit" id="button" name="submit" >
+                    
+
                  </div>
-    <!-- </form>
-    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
-        <label for="fname" > name:</label>
-        <input  id="email" type="text" id="name" name="name"><br><br>
-        <label for="email">email</label>
-        <input type="text" id="name" name="email"><br><br>
-        <label for="message">message</label>
-        <input type="text" id="message" name="message"><br><br>
-        <input type="submit" value="Submit">
-      </form> -->
-   
+    
      
-<!--   
-  
+      </form>
+    </main>
+    
   </div> 
   <div id="center2"> 
    <span id="center1"> Agrel </span> Portal
 </div>
 
-    <script src="login.js"></script>
 
-</body>
-</html> --> 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-    <form onsubmit=" return login()">
-        <!-- <label for="fname" > name:</label>
-        <input type="name" id="name" name="name"><br><br> -->
-        <label for="fname" > email:</label>
-        <input type="email" id="email" name="email"><br><br>
-        <label for="email">password</label>
-        <input type="password" id="password" name="password">
-     
-        <input type="submit" id="submit" name="submit" > Submit </button>
-      </form>
-    </main>
       <!-- <script src="form.js"></script>  -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
       <script type="text/javascript">

@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- Backend to be implemented in feedback section soon -->
     <header id="body-header">
         <nav>
 
@@ -227,38 +226,33 @@ Assisting farmers in the <span class="text-highlight">protection and maintenance
             <div id="contact-container">
 
                 <div id="contact-form-container" >
-                    <!-- <form id="contact-form" method="post"> -->
-                        <!-- <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" id="contact-form-container" method="post">
-                            <label for="fname" > </label>
-                            <input id="input-name" name="name" type="text" placeholder="Your Name">
-                            <label for="email"></label>
-                            <input id="input-email" name="email" type="text" required placeholder="Your Email">
-                            <label for="message"></label>
-                        <textarea id="input-message" name="message" rows="2" cols=40 placeholder="Message"></textarea>
-                        <input class="sub-btn" type="submit" value="submit">
-                    </form> -->
-                    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
-                        <label for="fname" > name:</label>
-                        <input  id="email" type="text" id="name" name="name"><br><br>
-                        <label for="email">email</label>
-                        <input type="text" id="name" name="email"><br><br>
-                        <label for="message">message</label>
-                        <input type="text" id="message" name="message"><br><br>
-                        <input type="submit" value="Submit">
-                      </form>
+               
+                  
                 </div>
-
-                 <!-- </form>
-    <form action="http://acril-backend.herokuapp.com/api/v1/feedback/add" method="post">
-        <label for="fname" > name:</label>
-        <input  id="email" type="text" id="name" name="name"><br><br>
-        <label for="email">email</label>
-        <input type="text" id="name" name="email"><br><br>
-        <label for="message">message</label>
-        <input type="text" id="message" name="message"><br><br>
-        <input type="submit" value="Submit">
-      </form> -->
+                <form onsubmit=" return feedback()">
+                    <label for="fname" > Name</label>
+                    <input id="input-name " name="name" type="text" placeholder="Your Name">
+                    <label for="email">Email</label>
+                    <input id="input-email" name="email" type="email" required placeholder="Your Email">
+                    <label for="message"> Message</label>
+                <textarea id="input-message" name="message" rows="2" cols=40 placeholder="Message"></textarea>
+                <input class="sub-btn" type="submit" value="submit">
+      
+                                
+            
                 
+                 
+                  </form>
+              
+                
+             
+            
+            
+                  <!-- <script src="form.js"></script>  -->
+        
+            </body>
+            </html>
+               
                 <div id="my-details-container">
 
   
@@ -321,6 +315,57 @@ Assisting farmers in the <span class="text-highlight">protection and maintenance
         // console.log(ReviewApp);
         ReviewApp.initialize();
         </script>
-</script>
+              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+              <script type="text/javascript">
+                  var jwt = localStorage.getItem('token');
+        if (jwt != null) {
+            window.location.href = '../WeatherApp/weather.html';
+        }
+        
+        function feedback(event) {
+            event.preventDefault();
+            const name = document.getElementById('input-name').value;
+            const email = document.getElementById('input-email').value;
+            const message = document.getElementById('input-message').value;
+            
+            const xhttp = new XMLHttpRequest();
+            xhttp.open('POST', 'http://localhost:3000/api/v1/feedback/add');
+            xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhttp.send(JSON.stringify({
+                'name':name,
+                'email': email,
+                'message':message
+            }));
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    const objects = JSON.parse(this.responseText);
+                    console.log(objects);
+                    if (objects['status'] == 'ok') {
+                        localStorage.setItem('token', objects['token']);
+                        console.log(objects['token']);
+                        Swal.fire({
+                            text: objects['message'],
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                          
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '../WeatherApp/weather.html';
+        
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            text: objects['message'],
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                }
+            };
+            return false;
+        }
+              </script>
+
 </body>
 </html>
