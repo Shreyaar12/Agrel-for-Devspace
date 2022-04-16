@@ -4,6 +4,22 @@ const Farmer = require(join(__dirname, "..", "models", "Farmer"));
 const { verifyFarmer } = require(join(__dirname, "..", "middleware", "auth"));
 /* eslint-disable no-unused-vars */
 // this is for farmer dashboard
+router.post("/opentocontract", verifyFarmer, async (req, res) => {
+  const { openToContractFarming } = req.body;
+  try {
+    const farmer = await Farmer.findById(req.user.user.id);
+    if (!farmer) {
+      return res.status(400).json({ message: "User does not exist" });
+    }
+    if (!openToContractFarming !== "true" && !openToContractFarming !== "false") return res.status(400).json({ message: "Invalid input" });
+    farmer.openToContractFarming = openToContractFarming;
+    await farmer.save();
+    return res.status(200).json({ status: "ok" });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server error");
+  }
+});
 router.post("/crop", verifyFarmer, async (req, res) => {
   const { name, description, details, location, openToContractFarming } = req.body;
   if (!details.howOld) {
