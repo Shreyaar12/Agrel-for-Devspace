@@ -21,7 +21,7 @@ var CartApp= (function(){
         
     // })
       try{
-        const response = await fetch("http://localhost:3000/api/v1/equipment")
+        const response = await fetch("http://localhost:3000/api/v1/equipments")
         const data= await response.json();
         console.log(data);
         tasks= data.slice(0,10);

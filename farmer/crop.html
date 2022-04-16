@@ -107,12 +107,12 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
   <script type="text/javascript">
-      var jwt = localStorage.getItem('token');
-if (jwt != null) {
-window.location.href = 'farmer.html';
+var jwt = localStorage.getItem('token');
+if (jwt == null) {
+window.location.href = '../Login/login.html';
 }
 
-function crop(event) {
+function crop() {
 
     const name = document.getElementById('full-name').value;
     const description = document.getElementById('email').value;
@@ -137,8 +137,7 @@ xhttp.send(JSON.stringify({
     'description': description,
     'details':{
         "howOld": howOld,
-        "estimatedTime": estimatedTime,
-
+        "estimatedTime": estimatedTime
     },
     "location": {
        " city ": city,

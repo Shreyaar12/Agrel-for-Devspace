@@ -52,7 +52,7 @@
             <label for="email" class="leading-7 text-sm text-gray-600" style="user-select: auto;">I am open to Contract Farming(True/False)</label>
             <input type="text" id=" openToContractFarming" name=" openToContractFarming" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" style="user-select: auto;">
           </div>
-        <button class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg" style="user-select: auto;">Submit</button>
+        <input type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg" style="user-select: auto;">
       </div>
     </div>
   </section>
@@ -113,10 +113,10 @@ xhttp.send(JSON.stringify({
 }));
 
 xhttp.onreadystatechange = function () {
-    if (this.readyState == 4) {
+    if (this.readyState === 4) {
         const objects = JSON.parse(this.responseText);
         console.log(objects);
-        if (objects['status'] == 'ok') {
+        if (objects['status'] === 'ok') {
             localStorage.setItem('token', objects['token']);
             console.log(objects['token']);
             Swal.fire({
@@ -126,7 +126,7 @@ xhttp.onreadystatechange = function () {
               
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // window.location.href = 'home.html';
+                    window.location.href = 'home.html';
 
                 }
             });
