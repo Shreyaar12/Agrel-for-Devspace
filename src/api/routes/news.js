@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
       return {
         title: news.title,
         description: news.description,
-        image: news.image,
+        category: news.category,
         date: news.date
       };
     });
@@ -24,11 +24,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, category } = req.body;
   try {
     const n = new News({
       title,
-      description
+      description,
+      category
     });
     n.save().
       then(() => {
