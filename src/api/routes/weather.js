@@ -9,7 +9,7 @@
 // to do
 const { join } = require("path");
 const router = require("express").Router();
-const { getWeather, forecast } = require(join(__dirname, "..", "functions", "weather"));
+const { getWeather, getforecast, isCropAbleToGrow } = require(join(__dirname, "..", "functions", "weather"));
 
 
 router.get("/", async (req, res) => {
@@ -39,8 +39,8 @@ router.get("/upcoming", async (req, res) => {
   if (!city) return res.status(400).json({ message: "City is required" });
   if (!days) return res.status(400).json({ message: "Days is required" });
   try {
-    const data = await forecast(city, days);
-    if (!data) return res.status(400).json({ message: "City not found" });
+    const data = await getforecast(city, days);
+    if (!data) return res.status(400).json({ message: "City or Crop not found" });
     return res.status(200).json({ data });
   } catch (err) {
     console.log(err);
@@ -52,7 +52,14 @@ router.get("/status", async (req, res) => {
   const { crop, city } = req.body;
   if (!city) return res.status(400).json({ message: "City is required" });
   if (!crop) return res.status(400).json({ message: "Crop is required" });
-  // have to check for today's forecast and if there is rainfall
-})
+  try {
+    const data = await isCropAbleToGrow(crop, city);
+    if (!data) return res.status(400).json({ message: "Crop in DataBase not found, Please ask admin to update database" });
+    return res.status(200).json({ data });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+});
 
 module.exports = router;
