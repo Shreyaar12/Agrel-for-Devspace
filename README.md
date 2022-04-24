@@ -162,7 +162,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - Shreya Rajpal, Anuj Parihar and team
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/Shreyaar12/Agrel-for-Devspace)
+Project Link: [https://github.com/Shreyaar12/Agrel-for-Devspace]
+Project Overview: [https://www.canva.com/design/DAE93NZc4e0/Qd9zsi9Rk_gglRV7VWW0SA/view?utm_content=DAE93NZc4e0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink#17]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
